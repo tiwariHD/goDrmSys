@@ -140,20 +140,20 @@ func (info *DeviceInfo) from_sys (d C.drmDevicePtr) {
     switch int(d.bustype) {
 
     case DRM_BUS_PCI :
-        info.BusInfo = *((*DrmPciBusInfo)(unsafe.Pointer(&d.businfo)))
-        info.DevInfo = *((*DrmPciDeviceInfo)(unsafe.Pointer(&d.deviceinfo)))
+        info.BusInfo = *(*(*DrmPciBusInfo))(unsafe.Pointer(&d.businfo))
+        info.DevInfo = *(*(*DrmPciDeviceInfo))(unsafe.Pointer(&d.deviceinfo))
 
     case DRM_BUS_USB :
-        info.BusInfo = *((*DrmUsbBusInfo)(unsafe.Pointer(&d.businfo)))
-        info.DevInfo = *((*DrmUsbDeviceInfo)(unsafe.Pointer(&d.deviceinfo)))
+        info.BusInfo = *(*(*DrmUsbBusInfo))(unsafe.Pointer(&d.businfo))
+        info.DevInfo = *(*(*DrmUsbDeviceInfo))(unsafe.Pointer(&d.deviceinfo))
 
     case DRM_BUS_PLATFORM :
-        info.BusInfo = *((*DrmPlatformBusInfo)(unsafe.Pointer(&d.businfo)))
-        info.DevInfo = *((*DrmPlatformDeviceInfo)(unsafe.Pointer(&d.deviceinfo)))
+        info.BusInfo = *(*(*DrmPlatformBusInfo))(unsafe.Pointer(&d.businfo))
+        info.DevInfo = *(*(*DrmPlatformDeviceInfo))(unsafe.Pointer(&d.deviceinfo))
 
     case DRM_BUS_HOST1X :
-        info.BusInfo = *((*DrmHost1xBusInfo)(unsafe.Pointer(&d.businfo)))
-        info.DevInfo = *((*DrmHost1xDeviceInfo)(unsafe.Pointer(&d.deviceinfo)))
+        info.BusInfo = *(*(*DrmHost1xBusInfo))(unsafe.Pointer(&d.businfo))
+        info.DevInfo = *(*(*DrmHost1xDeviceInfo))(unsafe.Pointer(&d.deviceinfo))
     }
 }
 
